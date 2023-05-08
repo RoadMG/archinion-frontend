@@ -3,6 +3,7 @@ import Contact from "./Router/Contact";
 import Home from "./Router/Home";
 import Inform from "./Router/Inform";
 import Project from "./Router/Project";
+import About from "./Router/About";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
   { path: "/project", element: <Project /> },
   { path: "/inform", element: <Inform /> },
   { path: "/contact", element: <Contact /> },
+  { path: "/about", element: <About /> },
 ]);
 
 export default router;

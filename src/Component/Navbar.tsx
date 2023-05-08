@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import WidthPercentage, {
   FontPercentage,
   HeightPercentage,
 } from "../Responsive";
+import { Link } from "react-router-dom";
 
 const Box = styled.div`
   position: absolute;
@@ -35,15 +37,59 @@ const MainLight = styled.p`
   letter-spacing: 0.26em;
   color: #ffffff;
 `;
+const MenuBox = styled.div`
+  position: absolute;
+  right: 0;
+  padding-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 15vw;
+  background-color: black;
+`;
+
+const MenuText = styled(Link)`
+  font-size: ${FontPercentage(25)};
+  text-align: end;
+  margin: 5px 15px 0px 0px;
+`;
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(true);
+
+  const menuClick = () => {
+    setMenuOpen(!menuOpen);
+  };
   return (
     <Box>
       <MainTextBox as="a" href="/">
         <MainBold>ARCHINION</MainBold>
         <MainLight>architecture-union</MainLight>
       </MainTextBox>
-      <MenuIcon sx={{ fontSize: 40, marginTop: "0.2em" }} />
+      {menuOpen == true ? (
+        <MenuIcon
+          sx={{ fontSize: 40, marginTop: "0.2em", cursor: "pointer" }}
+          onClick={menuClick}
+        />
+      ) : (
+        <>
+          <CloseIcon
+            sx={{
+              fontSize: 40,
+              marginTop: "0.2em",
+              zIndex: 20,
+              cursor: "pointer",
+            }}
+            onClick={menuClick}
+          />
+          <MenuBox>
+            <MenuText to={"/project"}>Project</MenuText>
+            <MenuText to={"/inform"}>Inform</MenuText>
+            <MenuText to={"/about"}>About</MenuText>
+            <MenuText to={"/contact"}>Contact</MenuText>
+          </MenuBox>
+        </>
+      )}
     </Box>
   );
 };

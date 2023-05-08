@@ -24,14 +24,14 @@ const CopyText = styled.p`
   text-align: center;
   letter-spacing: 0.05em;
 
-  color: #ffffff;
+  color: #a9a6a6;
 `;
 
 const InstaText = styled.a`
   font-size: ${FontPercentage(20)};
   text-align: center;
   letter-spacing: 0.05em;
-  color: #ffffff;
+  color: #a9a6a6;
 `;
 
 const Footer = () => {

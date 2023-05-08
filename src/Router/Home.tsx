@@ -7,7 +7,7 @@ import WidthPercentage, {
   HeightPercentage,
 } from "../Responsive";
 
-const Box = styled.div`
+export const Box = styled.div`
   display: flex;
   justify-content: center;
   background-color: #4c4847;
