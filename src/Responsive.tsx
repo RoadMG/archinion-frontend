@@ -1,6 +1,6 @@
 const FIGMA_WINDOW_WIDTH = 1440;
 const FIGMA_WINDOW_HEIGHT = 1024;
-const FIGMA_FONT = 16;
+const FIGMA_FONT = 20;
 
 export default function WidthPercentage(width: number) {
   const percentage = (width / FIGMA_WINDOW_WIDTH) * 100;
