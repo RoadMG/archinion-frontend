@@ -5,11 +5,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import { FontPercentage } from "../Responsive";
 import { Link } from "react-router-dom";
 
-const Box = styled.div`
+const Box = styled.div<{ crntUrl: string }>`
   position: absolute;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: ${(props) =>
+    props.crntUrl === "/" ? "flex-end" : "space-between"};
   padding: 5px 20px 0 20px;
   flex-direction: row;
 `;
@@ -45,6 +46,7 @@ const MenuBox = styled.div`
   background-color: #e5e5e5;
   border-radius: 5px;
   opacity: 0.8;
+  z-index: 999;
 `;
 
 const MenuText = styled(Link)`
@@ -56,16 +58,20 @@ const MenuText = styled(Link)`
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(true);
-
+  const currentUrl = window.location.pathname;
   const menuClick = () => {
     setMenuOpen(!menuOpen);
   };
+
   return (
-    <Box>
-      <MainTextBox as="a" href="/">
-        <MainBold>ARCHINION</MainBold>
-        <MainLight>architecture-union</MainLight>
-      </MainTextBox>
+    <Box crntUrl={currentUrl}>
+      {currentUrl == "/" ? null : (
+        <MainTextBox as="a" href="/">
+          <MainBold>ARCHINION</MainBold>
+          <MainLight>architecture-union</MainLight>
+        </MainTextBox>
+      )}
+
       {menuOpen === true ? (
         <MenuIcon
           sx={{ fontSize: 40, marginTop: "0.2em", cursor: "pointer" }}

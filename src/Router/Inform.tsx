@@ -16,11 +16,12 @@ const Box = styled.div`
   margin: 0px 24px 0px 24px;
 `;
 
-const InformBox = styled.div`
+const InformBox = styled.a`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   width: ${WidthPercentage(457)};
+  cursor: pointer;
 `;
 
 const InformDate = styled.p`
@@ -45,7 +46,7 @@ const Inform = () => {
       <Navbar />
       <Box>
         {data?.map((inform) => (
-          <InformBox>
+          <InformBox href={inform.link} target="_blank" key={inform.pk}>
             {inform.photo[0].urlfile ? (
               <img src={inform.photo[0].urlfile} alt="..." />
             ) : (

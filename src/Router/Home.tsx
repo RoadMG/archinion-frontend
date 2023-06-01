@@ -6,6 +6,7 @@ import WidthPercentage, {
   FontPercentage,
   HeightPercentage,
 } from "../Responsive";
+import { useRef } from "react";
 
 export const Box = styled.div`
   display: flex;

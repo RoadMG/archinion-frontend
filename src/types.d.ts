@@ -12,3 +12,14 @@ export interface IInformProps {
   date: string;
   photo: IInfromPhotoPros[];
 }
+
+export interface IProjectProps {
+  pk: number;
+  name: string;
+  programs: [];
+  location: string;
+  status: string;
+  year: number;
+  description: string;
+  photo: IInfromPhotoPros[];
+}

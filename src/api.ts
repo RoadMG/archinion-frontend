@@ -6,3 +6,6 @@ const instance = axios.create({
 
 export const getInforms = () =>
   instance.get("/inform/").then((response) => response.data);
+
+export const getProject = () =>
+  instance.get("/project/").then((response) => response.data);
