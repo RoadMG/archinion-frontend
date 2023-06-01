@@ -5,6 +5,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { theme } from "./theme";
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -71,14 +72,18 @@ a{
 }
 `;
 
+const client = new QueryClient();
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    <RouterProvider router={router} />
-  </ThemeProvider>
+  <QueryClientProvider client={client}>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </QueryClientProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
