@@ -6,6 +6,7 @@ import { getProject } from "../api";
 import { IProjectProps } from "../types";
 import Footer from "../Component/Footer";
 import WidthPercentage from "../Responsive";
+import { Link } from "react-router-dom";
 
 const ProjBox = styled.div`
   display: grid;
@@ -16,7 +17,7 @@ const ProjBox = styled.div`
   gap: 24px;
 `;
 
-const ProjLink = styled.a`
+const ProjLink = styled(Link)`
   width: 447px;
 `;
 
@@ -37,7 +38,7 @@ const Project = () => {
       <Navbar />
       <ProjBox>
         {data?.map((props) => (
-          <ProjLink key={props.pk}>
+          <ProjLink to={`/project/${props.pk}`} key={props.pk}>
             {props.photo[0].urlfile ? (
               <ProjImg src={props.photo[0].urlfile} alt="..." />
             ) : (
