@@ -23,3 +23,16 @@ export interface IProjectProps {
   description: string;
   photo: IInfromPhotoPros[];
 }
+
+export interface IProjectDetailProps {
+  id: number;
+  created: string;
+  updated: string;
+  name: string;
+  location: string;
+  status: string;
+  year: number;
+  description: string;
+  programs: [number];
+  photo: IInfromPhotoPros[];
+}
