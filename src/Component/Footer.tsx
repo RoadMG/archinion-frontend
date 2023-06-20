@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { FontPercentage } from "../Responsive";
-const Box = styled.div`
+const Box = styled.footer`
   position: absolute;
-  top: ${window.outerHeight}px;
+  bottom: 0px;
   width: 100%;
+  height: 5vh;
+  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0;
-  padding: 10px;
   color: #a9a6a6;
 `;
 
@@ -35,7 +35,6 @@ const InstaText = styled.a`
 `;
 
 const Footer = () => {
-  console.log(window.innerHeight, ": inner", window.outerHeight, ": outer");
   return (
     <Box>
       <CopyBox>

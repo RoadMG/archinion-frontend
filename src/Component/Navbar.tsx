@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { FontPercentage } from "../Responsive";
+
 import { Link } from "react-router-dom";
 
 const Box = styled.div<{ crntUrl: string }>`
-  position: absolute;
   width: 100%;
   display: flex;
   justify-content: ${(props) =>
@@ -56,6 +55,14 @@ const MenuText = styled(Link)`
   margin: 5px 15px 0px 0px;
 `;
 
+const Overlay = styled.div`
+  position: absolute;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+`;
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(true);
   const currentUrl = window.location.pathname;
@@ -65,7 +72,7 @@ const Navbar = () => {
 
   return (
     <Box crntUrl={currentUrl}>
-      {currentUrl == "/" ? null : (
+      {currentUrl === "/" ? null : (
         <MainTextBox as="a" href="/">
           <MainBold>ARCHINION</MainBold>
           <MainLight>architecture-union</MainLight>
@@ -88,20 +95,22 @@ const Navbar = () => {
             }}
             onClick={menuClick}
           />
-          <MenuBox>
-            <MenuText onClick={menuClick} to={"/project"}>
-              Project
-            </MenuText>
-            <MenuText onClick={menuClick} to={"/inform"}>
-              Inform
-            </MenuText>
-            <MenuText onClick={menuClick} to={"/about"}>
-              About
-            </MenuText>
-            <MenuText onClick={menuClick} to={"/contact"}>
-              Contact
-            </MenuText>
-          </MenuBox>
+          <Overlay onClick={menuClick}>
+            <MenuBox>
+              <MenuText onClick={menuClick} to={"/project"}>
+                Project
+              </MenuText>
+              <MenuText onClick={menuClick} to={"/inform"}>
+                Inform
+              </MenuText>
+              <MenuText onClick={menuClick} to={"/about"}>
+                About
+              </MenuText>
+              <MenuText onClick={menuClick} to={"/contact"}>
+                Contact
+              </MenuText>
+            </MenuBox>
+          </Overlay>
         </>
       )}
     </Box>

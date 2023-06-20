@@ -1,4 +1,4 @@
-export interface IInfromPhotoProps {
+export interface IInformPhotoProps {
   pk: number;
   urlfile: string | null;
   file: string | null;
@@ -34,5 +34,5 @@ export interface IProjectDetailProps {
   year: number;
   description: string;
   programs: [number];
-  photo: IInfromPhotoPros[];
+  photo: IInformPhotoPros[];
 }
