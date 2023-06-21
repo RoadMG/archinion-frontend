@@ -6,22 +6,28 @@ import { getInforms } from "../api";
 import styled from "styled-components";
 import { IInformProps } from "../types";
 import WidthPercentage from "../Responsive";
+import Footer from "../Component/Footer";
 
 const Box = styled.div`
-  position: absolute;
-  top: 20vh;
+  position: relative;
+  padding-top: 13vh;
+`;
+
+const ImageBox = styled.div`
+  width: 100vw;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 9px;
-  margin: 0px 24px 0px 24px;
+  margin: 0px 24px 0px;
 `;
 
 const InformBox = styled.a`
+  width: 30vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: ${WidthPercentage(457)};
   cursor: pointer;
+  color: #ffffff;
+  background-color: gray;
 `;
 
 const InformDate = styled.p`
@@ -39,12 +45,12 @@ const InformTitle = styled.p`
 `;
 
 const Inform = () => {
-  const { isLoading, data } = useQuery<IInformProps[]>(["informs"], getInforms);
+  const { data } = useQuery<IInformProps[]>(["informs"], getInforms);
 
   return (
-    <>
+    <Box>
       <Navbar />
-      <Box>
+      <ImageBox>
         {data?.map((inform) => (
           <InformBox href={inform.link} target="_blank" key={inform.pk}>
             {inform.photo[0].urlfile ? (
@@ -59,8 +65,10 @@ const Inform = () => {
             <InformTitle>{inform.name}</InformTitle>
           </InformBox>
         ))}
-      </Box>
-    </>
+      </ImageBox>
+
+      <Footer />
+    </Box>
   );
 };
 

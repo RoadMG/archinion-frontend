@@ -75,6 +75,7 @@ const SmallImage = styled.img`
   width: 200px;
   height: 200px;
   margin: 15px;
+  cursor: pointer;
 `;
 
 const StatusBox = styled.div`
@@ -152,8 +153,8 @@ const Projectdetail = () => {
     }
   };
 
-  const onSmallImageClick = (prop: IInformPhotoProps) => {
-    console.log(prop.pk);
+  const onSmallImageClick = (no: number) => {
+    setPhotoNum(no);
   };
 
   return (
@@ -170,7 +171,20 @@ const Projectdetail = () => {
                 alt="..."
               />
             ) : (
-              <PhotoOverlay></PhotoOverlay>
+              <>
+                <MainImage
+                  src={projectDetailData.photo[photoNum].file}
+                  alt="..."
+                  onClick={onPhotoClick}
+                />
+                <PhotoOverlay onClick={onPhotoClick}>
+                  <OverlayPhoto
+                    src={projectDetailData.photo[photoNum].file}
+                    alt="..."
+                    onClick={onPhotoClick}
+                  />
+                </PhotoOverlay>
+              </>
             )
           ) : photoClick === true ? (
             <MainImage
@@ -204,13 +218,13 @@ const Projectdetail = () => {
             </div>
           </ArrowBox>
           <SmallImageBox>
-            {projectDetailData.photo.map((prop) =>
+            {projectDetailData.photo.map((prop, no: number) =>
               prop.urlfile ? (
                 <SmallImage
-                  key={prop.pk}
+                  key={no}
                   src={prop.urlfile}
                   alt="..."
-                  onClick={() => onSmallImageClick(prop)}
+                  onClick={() => onSmallImageClick(no)}
                 />
               ) : (
                 <SmallImage key={prop.pk} src={prop.file} alt="..." />

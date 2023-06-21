@@ -9,6 +9,7 @@ import WidthPercentage, {
 } from "../Responsive";
 
 const Box = styled.div`
+  position: relative;
   padding-top: 13vh;
   display: flex;
   flex-direction: column;
@@ -37,6 +38,7 @@ const NameText = styled.h2`
   margin-top: 5vh;
   font-weight: 500;
   font-size: ${FontPercentage(25)};
+  text-align: center;
 `;
 
 const CVText = styled.p`
@@ -45,20 +47,28 @@ const CVText = styled.p`
   font-size: ${FontPercentage(15)};
   letter-spacing: 0.05em;
   text-decoration-line: underline;
+  text-align: center;
   color: #a9a6a6;
+`;
+
+const ContentBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 15vh;
 `;
 
 const About = () => {
   return (
-    <>
+    <Box>
       <Navbar />
-      <Box>
-        <Image
-          src={
-            "https://imagedelivery.net/yvfURjmeP6k1KpJl18HyEQ/39856ff1-e769-4e2d-2a79-044f342ad100/public"
-          }
-          alt="..."
-        />
+      <Image
+        src={
+          "https://imagedelivery.net/yvfURjmeP6k1KpJl18HyEQ/39856ff1-e769-4e2d-2a79-044f342ad100/public"
+        }
+        alt="..."
+      />
+      <ContentBox>
         <ContentText>
           아키니언(ARCHINION)은 건축(Architecture)과 연방(Union)을 합쳐서
           만들어진 단어입니다. 다양한 사람들 각자의 개성과 가치관을 존중하고,
@@ -77,9 +87,10 @@ const About = () => {
         </ContentText>
         <NameText>장영재</NameText>
         <CVText>Downloads ARCHINION CV</CVText>
-      </Box>
+      </ContentBox>
+
       <Footer />
-    </>
+    </Box>
   );
 };
 

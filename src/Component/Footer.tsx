@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FontPercentage } from "../Responsive";
 const Box = styled.footer`
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
   height: 5vh;
   align-items: center;

@@ -6,12 +6,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 
 const Box = styled.div<{ crntUrl: string }>`
+  position: fixed;
+  top: 0;
   width: 100%;
   display: flex;
   justify-content: ${(props) =>
     props.crntUrl === "/" ? "flex-end" : "space-between"};
   padding: 5px 20px 0 20px;
   flex-direction: row;
+  z-index: 999;
 `;
 const MainTextBox = styled.div`
   display: flex;
@@ -57,6 +60,7 @@ const MenuText = styled(Link)`
 
 const Overlay = styled.div`
   position: absolute;
+  right: 10px;
   z-index: 10;
   width: 100vw;
   height: 100vh;

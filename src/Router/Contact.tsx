@@ -6,16 +6,23 @@ import { HeightPercentage } from "../Responsive";
 import Footer from "../Component/Footer";
 import "../InfoStyle.css";
 
+const Box = styled.div`
+  padding-top: 13vh;
+  position: relative;
+`;
+
 const MapBox = styled.div`
-  left: 24px;
-  top: 117px;
+  margin-left: 24px;
   width: ${WidthPercentage(802)};
-  height: 539px;
+  height: 60vh;
 `;
 const AboutBox = styled.div`
-  position: absolute;
-  left: 24px;
-  top: 696px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 24px;
+  margin-top: 50px;
+  height: 30vh;
 `;
 const AboutText = styled.p`
   font-style: normal;
@@ -71,14 +78,12 @@ const Contact = () => {
     };
 
     initMap();
-    console.log(contentString);
   }, []);
 
   return (
-    <div>
+    <Box>
       <Navbar />
       <MapBox id="map"></MapBox>
-
       <AboutBox>
         <AboutText>서울특별시 서초구 신반포로45길 26 3층 303호</AboutText>
         <AboutText>TEL. 0507-1371-7289</AboutText>
@@ -86,7 +91,7 @@ const Contact = () => {
         <AboutText>Instagram. @archinion</AboutText>
       </AboutBox>
       <Footer />
-    </div>
+    </Box>
   );
 };
 
