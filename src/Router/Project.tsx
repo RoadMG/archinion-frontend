@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Component/Navbar";
 import styled from "styled-components";
 import { useQuery } from "react-query";
@@ -7,6 +7,11 @@ import { IProjectProps } from "../types";
 import Footer from "../Component/Footer";
 import WidthPercentage from "../Responsive";
 import { Link } from "react-router-dom";
+import { ModeBox, ModeLink } from "./ProjectList";
+
+const Box = styled.div`
+  min-height: 100vh;
+`;
 
 const ProjBox = styled.div`
   display: grid;
@@ -25,17 +30,23 @@ const ProjImg = styled.img`
   width: 447px;
 `;
 
-const ProjectContent = styled.link``;
-
 const Project = () => {
-  const { data, isLoading } = useQuery<IProjectProps[]>(
-    ["project"],
-    getProject
-  );
+  const { data } = useQuery<IProjectProps[]>(["project"], getProject);
 
   return (
-    <div>
+    <Box>
       <Navbar />
+      <ModeBox>
+        <ModeLink to={"/project"} style={{ cursor: "pointer", color: "white" }}>
+          Image
+        </ModeLink>
+        <ModeLink
+          to={"/project/list"}
+          style={{ cursor: "pointer", color: "white" }}
+        >
+          List
+        </ModeLink>
+      </ModeBox>
       <ProjBox>
         {data?.map((props) => (
           <ProjLink to={`/project/${props.pk}`} key={props.pk}>
@@ -51,7 +62,7 @@ const Project = () => {
         ))}
       </ProjBox>
       <Footer />
-    </div>
+    </Box>
   );
 };
 

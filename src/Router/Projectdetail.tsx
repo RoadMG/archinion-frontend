@@ -10,6 +10,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const Box = styled.div`
+  padding-top: 13vh;
   min-height: 100vh;
   position: relative;
   padding-bottom: 5vh;
@@ -82,6 +83,7 @@ const StatusBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-right: 5vw;
 `;
 const StatusSubject = styled.p`
   font-style: normal;
@@ -238,6 +240,16 @@ const Projectdetail = () => {
               <Status>{projectDetailData.status}</Status>
               <StatusSubject>Date</StatusSubject>
               <Status>{projectDetailData.year}</Status>
+              <StatusSubject>Program(s)</StatusSubject>
+              <Status>
+                {projectDetailData.programs.map((prop, id) =>
+                  projectDetailData.programs.length - 1 === id ? (
+                    <span key={prop.pk}>{prop.name} </span>
+                  ) : (
+                    <span key={prop.pk}>{prop.name}, </span>
+                  )
+                )}
+              </Status>
             </StatusBox>
           </DescriptBox>
         </ProjectBox>

@@ -5,6 +5,12 @@ export interface IInformPhotoProps {
   description: string;
 }
 
+export interface IProgramProps {
+  pk: number;
+  name: string;
+  description: string;
+}
+
 export interface IInformProps {
   pk: number;
   name: string;
@@ -16,7 +22,7 @@ export interface IInformProps {
 export interface IProjectProps {
   pk: number;
   name: string;
-  programs: [];
+  programs: IProgramProps[];
   location: string;
   status: string;
   year: number;
@@ -33,6 +39,6 @@ export interface IProjectDetailProps {
   status: string;
   year: number;
   description: string;
-  programs: [number];
+  programs: IProgramProps[];
   photo: IInformPhotoPros[];
 }

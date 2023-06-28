@@ -14,7 +14,7 @@ const Box = styled.div<{ crntUrl: string }>`
     props.crntUrl === "/" ? "flex-end" : "space-between"};
   padding: 5px 20px 0 20px;
   flex-direction: row;
-  z-index: 999;
+  z-index: 20;
 `;
 const MainTextBox = styled.div`
   display: flex;
@@ -27,7 +27,7 @@ const MainBold = styled.p`
   font-size: 35px;
   text-align: center;
   letter-spacing: 0.2em;
-  color: #a9a6a6;
+  color: #ffffff;
 `;
 const MainLight = styled.p`
   font-style: normal;
@@ -35,7 +35,7 @@ const MainLight = styled.p`
   font-size: 20px;
   text-align: center;
   letter-spacing: 0.26em;
-  color: #a9a6a6;
+  color: #ffffff;
 `;
 const MenuBox = styled.div`
   position: absolute;
@@ -48,7 +48,7 @@ const MenuBox = styled.div`
   background-color: #e5e5e5;
   border-radius: 5px;
   opacity: 0.8;
-  z-index: 999;
+  z-index: 20;
 `;
 
 const MenuText = styled(Link)`

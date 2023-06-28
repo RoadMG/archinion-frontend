@@ -5,7 +5,6 @@ import { useQuery } from "react-query";
 import { getInforms } from "../api";
 import styled from "styled-components";
 import { IInformProps } from "../types";
-import WidthPercentage from "../Responsive";
 import Footer from "../Component/Footer";
 
 const Box = styled.div`
@@ -14,20 +13,19 @@ const Box = styled.div`
 `;
 
 const ImageBox = styled.div`
-  width: 100vw;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr 1fr;
   margin: 0px 24px 0px;
+  padding-bottom: 15vh;
 `;
 
 const InformBox = styled.a`
-  width: 30vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   cursor: pointer;
   color: #ffffff;
-  background-color: gray;
+  margin: 10px 0px 0px;
 `;
 
 const InformDate = styled.p`
@@ -44,6 +42,17 @@ const InformTitle = styled.p`
   line-height: 29px;
 `;
 
+const InformBoxColum = styled.div`
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+`;
+const InformImage = styled.img`
+  margin: 0;
+  padding: 0;
+  width: 31.5vw;
+`;
 const Inform = () => {
   const { data } = useQuery<IInformProps[]>(["informs"], getInforms);
 
@@ -51,22 +60,67 @@ const Inform = () => {
     <Box>
       <Navbar />
       <ImageBox>
-        {data?.map((inform) => (
-          <InformBox href={inform.link} target="_blank" key={inform.pk}>
-            {inform.photo[0].urlfile ? (
-              <img src={inform.photo[0].urlfile} alt="..." />
-            ) : (
-              <img
-                src={`http://localhost:8000/${inform.photo[0].file}`}
-                alt="..."
-              />
-            )}
-            <InformDate>{inform.date}</InformDate>
-            <InformTitle>{inform.name}</InformTitle>
-          </InformBox>
-        ))}
+        <InformBoxColum>
+          {data?.map((inform, id) => (
+            <>
+              {id % 3 === 0 ? (
+                <InformBox href={inform.link} target="_blank" key={inform.pk}>
+                  {inform.photo[0].urlfile ? (
+                    <InformImage src={inform.photo[0].urlfile} alt="..." />
+                  ) : (
+                    <InformImage
+                      src={`http://localhost:8000/${inform.photo[0].file}`}
+                      alt="..."
+                    />
+                  )}
+                  <InformDate>{inform.date}</InformDate>
+                  <InformTitle>{inform.name}</InformTitle>
+                </InformBox>
+              ) : null}
+            </>
+          ))}
+        </InformBoxColum>
+        <InformBoxColum>
+          {data?.map((inform, id) => (
+            <>
+              {id % 3 === 1 ? (
+                <InformBox href={inform.link} target="_blank" key={inform.pk}>
+                  {inform.photo[0].urlfile ? (
+                    <InformImage src={inform.photo[0].urlfile} alt="..." />
+                  ) : (
+                    <InformImage
+                      src={`http://localhost:8000/${inform.photo[0].file}`}
+                      alt="..."
+                    />
+                  )}
+                  <InformDate>{inform.date}</InformDate>
+                  <InformTitle>{inform.name}</InformTitle>
+                </InformBox>
+              ) : null}
+            </>
+          ))}
+        </InformBoxColum>
+        <InformBoxColum>
+          {data?.map((inform, id) => (
+            <>
+              {id % 3 === 2 ? (
+                <InformBox href={inform.link} target="_blank" key={inform.pk}>
+                  {inform.photo[0].urlfile ? (
+                    <InformImage src={inform.photo[0].urlfile} alt="..." />
+                  ) : (
+                    <InformImage
+                      src={`http://localhost:8000/${inform.photo[0].file}`}
+                      alt="..."
+                    />
+                  )}
+                  <InformDate>{inform.date}</InformDate>
+                  <InformTitle>{inform.name}</InformTitle>
+                </InformBox>
+              ) : null}
+            </>
+          ))}
+        </InformBoxColum>
       </ImageBox>
-
       <Footer />
     </Box>
   );
