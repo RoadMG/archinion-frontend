@@ -44,17 +44,18 @@ const DescriptBox = styled.div`
   width: 100vw;
   color: #ffffff;
   min-height: 30vh;
-  margin: 0px 30px 0px 50px;
+  margin: 0px 30px 10vh 50px;
 `;
 
-const Description = styled.p`
+const Description = styled.pre`
   font-style: normal;
-  font-weight: 500;
+  font-weight: 50;
   font-size: 25px;
   line-height: 36px;
-  text-align: center;
   letter-spacing: 0.05em;
   text-align: start;
+  white-space: pre-wrap;
+  word-break: break-all;
 `;
 
 const ArrowBox = styled.div`
@@ -68,14 +69,25 @@ const SmallImageBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width: 100vw;
+  width: 95vw;
+  overflow-x: scroll;
   color: #ffffff;
+  margin: 20px 0 20px;
+  &::-webkit-scrollbar {
+    margin-top: 5px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #e4e4e4;
+    border-radius: 3px;
+  }
 `;
 
 const SmallImage = styled.img`
   width: 200px;
   height: 200px;
-  margin: 15px;
+  margin: 10px 0px 10px 10px;
   cursor: pointer;
 `;
 

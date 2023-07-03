@@ -11,23 +11,28 @@ import { ModeBox, ModeLink } from "./ProjectList";
 
 const Box = styled.div`
   min-height: 100vh;
+  position: relative;
+  padding-top: 13vh;
+  padding-bottom: 5vh;
 `;
 
 const ProjBox = styled.div`
+  width: 98vw;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  position: absolute;
-  top: 10vh;
+  grid-template-columns: repeat(3, minmax(25%, auto));
+  grid-template-rows: repeat(auto-fill, minmax(10%, auto));
   margin: 0px 24px 0px 24px;
-  gap: 24px;
 `;
 
 const ProjLink = styled(Link)`
-  width: 447px;
+  padding: 0;
 `;
 
 const ProjImg = styled.img`
-  width: 447px;
+  margin: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 `;
 
 const Project = () => {

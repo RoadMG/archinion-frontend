@@ -5,7 +5,7 @@ import { useQuery } from "react-query";
 import { getProject } from "../api";
 import { IProjectProps } from "../types";
 import Footer from "../Component/Footer";
-import WidthPercentage from "../Responsive";
+import WidthPercentage, { HeightPercentage } from "../Responsive";
 import { Link } from "react-router-dom";
 
 const Box = styled.div`
@@ -66,8 +66,8 @@ export const ModeBox = styled.p`
   width: 144px;
   justify-content: space-between;
   position: absolute;
-  top: 29px;
-  left: 900px;
+  top: ${HeightPercentage(29)};
+  left: ${WidthPercentage(900)};
   z-index: 50;
 `;
 
