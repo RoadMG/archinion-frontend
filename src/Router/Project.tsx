@@ -20,12 +20,25 @@ const ProjBox = styled.div`
   width: 98vw;
   display: grid;
   grid-template-columns: repeat(3, minmax(25%, auto));
-  grid-template-rows: repeat(auto-fill, minmax(10%, auto));
+  grid-template-rows: repeat(auto-fill, minmax(20%, 20%));
   margin: 0px 24px 0px 24px;
 `;
 
 const ProjLink = styled(Link)`
   padding: 0;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  &:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+  &:nth-child(3) {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+  }
 `;
 
 const ProjImg = styled.img`

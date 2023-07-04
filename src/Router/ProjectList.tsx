@@ -66,7 +66,7 @@ export const ModeBox = styled.p`
   width: 144px;
   justify-content: space-between;
   position: absolute;
-  top: ${HeightPercentage(29)};
+  top: ${HeightPercentage(50)};
   left: ${WidthPercentage(900)};
   z-index: 50;
 `;
