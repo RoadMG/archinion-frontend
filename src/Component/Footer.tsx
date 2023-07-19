@@ -44,7 +44,7 @@ const Footer = () => {
         </CopyText>
         <CopyText>all rights reserved</CopyText>
       </CopyBox>
-      <InstaText href="https://www.instagram.com/archinion/">
+      <InstaText href="https://www.instagram.com/archinion/" target="_blank">
         Instagram
       </InstaText>
     </Box>

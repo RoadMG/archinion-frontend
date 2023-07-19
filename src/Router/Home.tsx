@@ -6,21 +6,23 @@ import WidthPercentage, {
   FontPercentage,
   HeightPercentage,
 } from "../Responsive";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useQuery } from "react-query";
+import Project from "./Project";
 
 export const Box = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-color: #4c4847;
   width: 100vw;
-  height: 100vh;
 `;
 const TextBox = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: absolute;
-  top: ${HeightPercentage(700)};
+  margin-top: 20px;
   color: #ffffff;
 `;
 const NameBigText = styled.p`
@@ -38,36 +40,15 @@ const NameSamllText = styled.p`
   line-height: ${HeightPercentage(43)};
   letter-spacing: 0.39em;
 `;
-const CircleBox = styled.div``;
-const CircleBig = styled.div`
-  position: absolute;
-  left: ${WidthPercentage(564.81)};
-  top: ${HeightPercentage(259)};
-  width: 296.37px;
-  height: 304px;
-  border: ${FontPercentage(4)} solid #e4e4e4;
-  border-radius: 50%;
+const CircleBox = styled.div`
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
-
-const CircleMiddle = styled.div`
-  position: absolute;
-  width: 259px;
-  height: 264.72px;
-  left: ${WidthPercentage(648)};
-  top: ${HeightPercentage(274.37)};
-  border: 8px solid #818182;
-  border-radius: 50%;
-`;
-
-const CircleSmall = styled.div`
-  position: absolute;
-  width: 210.98px;
-  height: 215.19px;
-  left: ${WidthPercentage(533)};
-  top: ${HeightPercentage(337.56)};
-  border-radius: 50%;
-  border: 6px solid #908f90;
-`;
+const LogoImage = styled.img``;
 
 const textVariants = {
   normal: { opcacity: 0, y: -200 },
@@ -75,18 +56,38 @@ const textVariants = {
 };
 
 const Home = () => {
+  const targetRef = useRef(null);
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      console.log(window.innerHeight, window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      window.addEventListener("scroll", handleScroll);
+    }, 100);
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <Box>
-      <CircleBox>
-        <CircleBig />
-        <CircleMiddle />
-        <CircleSmall />
-      </CircleBox>
-      <TextBox initial="initial" variants={textVariants} animate="onscreen">
-        <NameBigText>ARCHINION</NameBigText>
-        <NameSamllText>architecture-union</NameSamllText>
-      </TextBox>
       <Navbar />
+      <CircleBox>
+        <LogoImage
+          src="https://imagedelivery.net/yvfURjmeP6k1KpJl18HyEQ/c1fa4229-9871-4ada-3c9f-e82fdad4e300/public"
+          style={{ width: "400px" }}
+          alt="..."
+        />
+        <TextBox initial="initial" variants={textVariants} animate="onscreen">
+          <NameBigText>ARCHINION</NameBigText>
+          <NameSamllText>architecture-union</NameSamllText>
+        </TextBox>
+      </CircleBox>
+
+      <Project />
     </Box>
   );
 };

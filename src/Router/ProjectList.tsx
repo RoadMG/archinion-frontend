@@ -60,7 +60,7 @@ const ListMainContentBox = styled.div`
 `;
 const ProjectContent = styled.link``;
 
-export const ModeBox = styled.p`
+export const ModeBox = styled.div`
   display: flex;
   flex-direction: row;
   width: 144px;

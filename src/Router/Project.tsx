@@ -50,21 +50,31 @@ const ProjImg = styled.img`
 
 const Project = () => {
   const { data } = useQuery<IProjectProps[]>(["project"], getProject);
+  const currentUrl = window.location.pathname;
 
   return (
     <Box>
-      <Navbar />
-      <ModeBox>
-        <ModeLink to={"/project"} style={{ cursor: "pointer", color: "white" }}>
-          Image
-        </ModeLink>
-        <ModeLink
-          to={"/project/list"}
-          style={{ cursor: "pointer", color: "white" }}
-        >
-          List
-        </ModeLink>
-      </ModeBox>
+      {currentUrl === "/" ? null : (
+        <>
+          {" "}
+          <Navbar />
+          <ModeBox>
+            <ModeLink
+              to={"/project"}
+              style={{ cursor: "pointer", color: "white" }}
+            >
+              Image
+            </ModeLink>
+            <ModeLink
+              to={"/project/list"}
+              style={{ cursor: "pointer", color: "white" }}
+            >
+              List
+            </ModeLink>
+          </ModeBox>
+        </>
+      )}
+
       <ProjBox>
         {data?.map((props) => (
           <ProjLink to={`/project/${props.pk}`} key={props.pk}>
@@ -79,7 +89,7 @@ const Project = () => {
           </ProjLink>
         ))}
       </ProjBox>
-      <Footer />
+      {currentUrl === "/" ? null : <Footer />}
     </Box>
   );
 };

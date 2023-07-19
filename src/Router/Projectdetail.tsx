@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../Component/Navbar";
 import Footer from "../Component/Footer";
 import { useQuery } from "react-query";
@@ -134,9 +134,16 @@ const OverlayPhoto = styled.img`
   height: 100vh;
 `;
 
+const PrevPageArrow = styled.div`
+  position: absolute;
+  left: 24px;
+  top: 15vh;
+  cursor: pointer;
+`;
+
 const Projectdetail = () => {
   const { projectPk } = useParams();
-
+  const navigate = useNavigate();
   const [photoNum, setPhotoNum] = useState(0);
   const [photoClick, setPhotoClick] = useState(true);
 
@@ -170,12 +177,18 @@ const Projectdetail = () => {
   const onSmallImageClick = (no: number) => {
     setPhotoNum(no);
   };
+  const navigateClick = () => {
+    navigate(-1);
+  };
 
   return (
     <Box>
       <Navbar />
       {projectDetailData ? (
         <ProjectBox>
+          <PrevPageArrow onClick={navigateClick}>
+            <ArrowBackIcon sx={{ fontSize: "35px" }} />
+          </PrevPageArrow>
           <ProjectTitle>{projectDetailData.name}</ProjectTitle>
           <p>{projectDetailData.location} </p>
           {projectDetailData.photo[photoNum].file ? (
