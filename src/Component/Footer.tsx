@@ -24,6 +24,10 @@ const CopyText = styled.p`
   font-size: 15px;
   text-align: center;
   letter-spacing: 0.05em;
+
+  @media screen and (max-width: 700px) {
+    font-size: 8px;
+  }
 `;
 
 const InstaText = styled.a`
@@ -32,6 +36,10 @@ const InstaText = styled.a`
   letter-spacing: 0.05em;
   text-decoration: none;
   color: #a9a6a6;
+
+  @media screen and (max-width: 700px) {
+    font-size: 12px;
+  }
 `;
 
 const Footer = () => {

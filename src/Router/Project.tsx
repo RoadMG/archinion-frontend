@@ -22,6 +22,10 @@ const ProjBox = styled.div`
   grid-template-columns: repeat(3, minmax(25%, auto));
   grid-template-rows: repeat(auto-fill, minmax(20%, 20%));
   margin: 0px 24px 0px 24px;
+
+  @media screen and (max-width: 700px) {
+    margin: 0px;
+  }
 `;
 
 const ProjLink = styled(Link)`

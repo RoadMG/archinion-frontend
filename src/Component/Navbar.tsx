@@ -28,6 +28,10 @@ const MainBold = styled.p`
   text-align: center;
   letter-spacing: 0.2em;
   color: #ffffff;
+
+  @media screen and(max-width: 700px) {
+    font-size: 20px;
+  }
 `;
 const MainLight = styled.p`
   font-style: normal;
@@ -36,6 +40,10 @@ const MainLight = styled.p`
   text-align: center;
   letter-spacing: 0.26em;
   color: #ffffff;
+
+  @media screen and (max-width: 700px) {
+    font-size: 10px;
+  }
 `;
 const MenuBox = styled.div`
   position: absolute;
@@ -56,6 +64,10 @@ const MenuText = styled(Link)`
   color: black;
   text-align: end;
   margin: 5px 15px 0px 0px;
+
+  @media screen and (max-width: 700px) {
+    font-size: 15px;
+  }
 `;
 
 const Overlay = styled.div`

@@ -17,6 +17,9 @@ export const Box = styled.div`
   align-items: center;
   background-color: #4c4847;
   width: 100vw;
+
+  @media screen and (max-width: 700px) {
+  }
 `;
 const TextBox = styled(motion.div)`
   display: flex;
@@ -48,7 +51,12 @@ const CircleBox = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-const LogoImage = styled.img``;
+const LogoImage = styled.img`
+  width: 400px;
+  @media screen and (max-width: 700px) {
+    width: 50vw;
+  }
+`;
 
 const textVariants = {
   normal: { opcacity: 0, y: -200 },
@@ -78,7 +86,6 @@ const Home = () => {
       <CircleBox>
         <LogoImage
           src="https://imagedelivery.net/yvfURjmeP6k1KpJl18HyEQ/c1fa4229-9871-4ada-3c9f-e82fdad4e300/public"
-          style={{ width: "400px" }}
           alt="..."
         />
         <TextBox initial="initial" variants={textVariants} animate="onscreen">
