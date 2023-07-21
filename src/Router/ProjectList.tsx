@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Component/Navbar";
 import styled from "styled-components";
 import { useQuery } from "react-query";
@@ -19,6 +19,11 @@ const ListBox = styled.div`
   margin: 24px;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 700px) {
+    margin: 2.5vw;
+    top: 5vh;
+  }
 `;
 const ListTextMain = styled.p`
   text-align: flex-start;
@@ -26,6 +31,10 @@ const ListTextMain = styled.p`
   font-weight: 350;
   letter-spacing: 0.75px;
   margin-bottom: 5px;
+
+  @media screen and (max-width: 700px) {
+    font-size: 10px;
+  }
 `;
 
 const ListTextContent = styled.p`
@@ -38,6 +47,17 @@ const ListTextContent = styled.p`
   &:nth-child(2) {
     overflow: hidden;
   }
+  &:nth-child(3) {
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 700px) {
+    font-size: 10px;
+    height: 10px;
+    &:nth-child(2) {
+      overflow: none;
+    }
+  }
 `;
 const ListContentBox = styled(Link)`
   display: grid;
@@ -48,6 +68,10 @@ const ListContentBox = styled(Link)`
   width: 95vw;
   margin: 0;
   padding: 0;
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: 3fr 2fr 1fr;
+  }
 `;
 const ListMainContentBox = styled.div`
   display: grid;
@@ -57,6 +81,10 @@ const ListMainContentBox = styled.div`
   width: 95vw;
   margin: 0;
   padding: 0;
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: 3fr 2fr 1fr;
+  }
 `;
 const ProjectContent = styled.link``;
 
@@ -69,6 +97,11 @@ export const ModeBox = styled.div`
   top: ${HeightPercentage(50)};
   left: ${WidthPercentage(900)};
   z-index: 50;
+
+  @media screen and (max-width: 700px) {
+    width: 50px;
+    top: ${HeightPercentage(20)};
+  }
 `;
 
 export const ModeLink = styled(Link)`
@@ -77,10 +110,15 @@ export const ModeLink = styled(Link)`
   text-align: center;
   font-weight: 500;
   letter-spacing: 1px;
+
+  @media screen and (max-width: 700px) {
+    font-size: 10px;
+  }
 `;
 
 const ProjectList = () => {
   const { data } = useQuery<IProjectProps[]>(["project"], getProject);
+
   return (
     <Box>
       <Navbar />
@@ -92,33 +130,61 @@ const ProjectList = () => {
           List
         </ModeLink>
       </ModeBox>
-
-      <ListBox>
-        <ListMainContentBox>
-          <ListTextMain>Project</ListTextMain>
-          <ListTextMain>Program(s)</ListTextMain>
-          <ListTextMain>Location</ListTextMain>
-          <ListTextMain>Status</ListTextMain>
-          <ListTextMain>Year</ListTextMain>
-        </ListMainContentBox>
-        {data?.map((props) => (
-          <ListContentBox key={props.pk} to={`/project/${props.pk}`}>
-            <ListTextContent>{props.name}</ListTextContent>
-            <ListTextContent>
-              {props.programs.map((prop, id) =>
-                props.programs.length - 1 === id ? (
-                  <span key={prop.pk}>{prop.name} </span>
-                ) : (
-                  <span key={prop.pk}>{prop.name}, </span>
-                )
-              )}
-            </ListTextContent>
-            <ListTextContent>{props.location}</ListTextContent>
-            <ListTextContent>{props.status}</ListTextContent>
-            <ListTextContent>{props.year}</ListTextContent>
-          </ListContentBox>
-        ))}
-      </ListBox>
+      {window.innerWidth > 700 ? (
+        <ListBox>
+          <ListMainContentBox>
+            <ListTextMain>Project</ListTextMain>
+            <ListTextMain>Program(s)</ListTextMain>
+            <ListTextMain>Location</ListTextMain>
+            <ListTextMain>Status</ListTextMain>
+            <ListTextMain>Year</ListTextMain>
+          </ListMainContentBox>
+          {data?.map((props) => (
+            <ListContentBox key={props.pk} to={`/project/${props.pk}`}>
+              <ListTextContent>{props.name}</ListTextContent>
+              <ListTextContent>
+                {props.programs.map((prop, id) =>
+                  props.programs.length - 1 === id ? (
+                    <span key={prop.pk}>{prop.name} </span>
+                  ) : (
+                    <span key={prop.pk}>{prop.name}, </span>
+                  )
+                )}
+              </ListTextContent>
+              <ListTextContent>{props.location}</ListTextContent>
+              <ListTextContent>{props.status}</ListTextContent>
+              <ListTextContent>{props.year}</ListTextContent>
+            </ListContentBox>
+          ))}
+        </ListBox>
+      ) : (
+        <ListBox>
+          <ListMainContentBox>
+            <ListTextMain>Project</ListTextMain>
+            <ListTextMain>Location</ListTextMain>
+            <ListTextMain>Year</ListTextMain>
+          </ListMainContentBox>
+          {data?.map((props) => (
+            <ListContentBox key={props.pk} to={`/project/${props.pk}`}>
+              <ListTextContent>{props.name}</ListTextContent>
+              <ListTextContent>
+                {
+                  props.location.split(",")[
+                    props.location.split(",").length - 2
+                  ]
+                }
+                ,
+                {
+                  props.location.split(",")[
+                    props.location.split(",").length - 1
+                  ]
+                }
+              </ListTextContent>
+              <ListTextContent>{props.year}</ListTextContent>
+            </ListContentBox>
+          ))}
+        </ListBox>
+      )}
 
       <Footer />
     </Box>

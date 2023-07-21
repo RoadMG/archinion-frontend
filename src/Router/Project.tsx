@@ -14,6 +14,10 @@ const Box = styled.div`
   position: relative;
   padding-top: 13vh;
   padding-bottom: 5vh;
+
+  @media screen and (max-width: 700px) {
+    padding-top: 5vh;
+  }
 `;
 
 const ProjBox = styled.div`

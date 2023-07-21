@@ -15,6 +15,10 @@ const Box = styled.div<{ crntUrl: string }>`
   padding: 5px 20px 0 20px;
   flex-direction: row;
   z-index: 20;
+
+  @media screen and (max-width: 700px) {
+    padding: 3px;
+  }
 `;
 const MainTextBox = styled.div`
   display: flex;
@@ -29,8 +33,8 @@ const MainBold = styled.p`
   letter-spacing: 0.2em;
   color: #ffffff;
 
-  @media screen and(max-width: 700px) {
-    font-size: 20px;
+  @media screen and (max-width: 700px) {
+    font-size: 18px;
   }
 `;
 const MainLight = styled.p`
@@ -43,6 +47,7 @@ const MainLight = styled.p`
 
   @media screen and (max-width: 700px) {
     font-size: 10px;
+    letter-spacing: 0.3em;
   }
 `;
 const MenuBox = styled.div`
@@ -57,6 +62,11 @@ const MenuBox = styled.div`
   border-radius: 5px;
   opacity: 0.8;
   z-index: 20;
+
+  @media screen and (max-width: 700px) {
+    top: 26px;
+    right: 0px;
+  }
 `;
 
 const MenuText = styled(Link)`
@@ -97,14 +107,18 @@ const Navbar = () => {
 
       {menuOpen === true ? (
         <MenuIcon
-          sx={{ fontSize: 40, marginTop: "0.2em", cursor: "pointer" }}
+          sx={{
+            fontSize: { xs: 25, md: 40, lg: 40 },
+            marginTop: "0.2em",
+            cursor: "pointer",
+          }}
           onClick={menuClick}
         />
       ) : (
         <>
           <CloseIcon
             sx={{
-              fontSize: 40,
+              fontSize: { xs: 25, md: 40, lg: 40 },
               marginTop: "0.2em",
               zIndex: 20,
               cursor: "pointer",
