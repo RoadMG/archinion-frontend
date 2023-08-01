@@ -67,7 +67,6 @@ const Home = () => {
   const targetRef = useRef(null);
   const handleScroll = () => {
     if (window.scrollY > 0) {
-      console.log(window.innerHeight, window.scrollY);
     }
   };
 

@@ -14,6 +14,9 @@ const Box = styled.div`
   min-height: 100vh;
   position: relative;
   padding-bottom: 5vh;
+  @media screen and (max-width: 700px) {
+    padding-top: 6vh;
+  }
 `;
 const ProjectBox = styled.div`
   justify-content: center;
@@ -30,12 +33,38 @@ const ProjectTitle = styled.h2`
   text-align: center;
   letter-spacing: 0.05em;
   color: #ffffff;
+
+  @media screen and (max-width: 700px) {
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+  }
+`;
+
+const ProjectLocation = styled.p`
+  font-size: 24px;
+  @media screen and (max-width: 700px) {
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.6px;
+  }
 `;
 
 const MainImage = styled.img`
   height: 700px;
   margin-top: 45px;
   cursor: pointer;
+
+  @media screen and (max-width: 700px) {
+    height: 263px;
+    width: 265px;
+  }
 `;
 const DescriptBox = styled.div`
   display: grid;
@@ -190,7 +219,7 @@ const Projectdetail = () => {
             <ArrowBackIcon sx={{ fontSize: "35px" }} />
           </PrevPageArrow>
           <ProjectTitle>{projectDetailData.name}</ProjectTitle>
-          <p>{projectDetailData.location} </p>
+          <ProjectLocation>{projectDetailData.location} </ProjectLocation>
           {projectDetailData.photo[photoNum].file ? (
             photoClick === true ? (
               <MainImage
