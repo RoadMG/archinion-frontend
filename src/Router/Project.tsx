@@ -90,7 +90,7 @@ const Project = () => {
               <ProjImg src={props.photo[0].urlfile} alt="..." />
             ) : (
               <ProjImg
-                src={`http://localhost:8000/${props.photo[0].file}`}
+                src={`https://archinion.onrender.com/${props.photo[0].file}`}
                 alt="..."
               />
             )}

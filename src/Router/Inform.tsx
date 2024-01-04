@@ -69,7 +69,7 @@ const Inform = () => {
                     <InformImage src={inform.photo[0].urlfile} alt="..." />
                   ) : (
                     <InformImage
-                      src={`http://localhost:8000/${inform.photo[0].file}`}
+                      src={`https://archinion.onrender.com/${inform.photo[0].file}`}
                       alt="..."
                     />
                   )}
@@ -89,7 +89,7 @@ const Inform = () => {
                     <InformImage src={inform.photo[0].urlfile} alt="..." />
                   ) : (
                     <InformImage
-                      src={`http://localhost:8000/${inform.photo[0].file}`}
+                      src={`https://archinion.onrender.com/${inform.photo[0].file}`}
                       alt="..."
                     />
                   )}
@@ -109,7 +109,7 @@ const Inform = () => {
                     <InformImage src={inform.photo[0].urlfile} alt="..." />
                   ) : (
                     <InformImage
-                      src={`http://localhost:8000/${inform.photo[0].file}`}
+                      src={`https://archinion.onrender.com/${inform.photo[0].file}`}
                       alt="..."
                     />
                   )}
