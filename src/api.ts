@@ -2,7 +2,10 @@ import axios from "axios";
 import { QueryFunctionContext } from "react-query";
 
 const instance = axios.create({
-  baseURL: "http://localhost:8000/api/v1/",
+  baseURL:
+    process.env.NODE_ENV === "developmetn"
+      ? "http://localhost:8000/api/v1/"
+      : "https://archinion.onrender.com/api/v1",
   withCredentials: true,
 });
 
